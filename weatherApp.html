@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+		<head>
+			<meta charset="UTF-8" />
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+			<link
+				href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+				rel="stylesheet"
+				integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+				crossorigin="anonymous"
+			/>
+			<link rel="preconnect" href="https://fonts.googleapis.com" />
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+			<link
+				href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200&display=swap"
+				rel="stylesheet"
+			/>
+			<script src="https://kit.fontawesome.com/27bf0240ef.js" crossorigin="anonymous">
+			</script>
+			<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+			<link rel="stylesheet" href="src/styles.css" />
+			<title>Weather Forecast</title>
+			
+		</head>
+		<body>
+			<div class="Container">
+				<h1>Weather Forecast</h1>
+				<img href="media/weather_girl.jpg" alt="Girl with Weather Forecast">
+				<hr />
+
+				<div class="search-bar"> 
+					<form class="search-form" id="search-form">
+						<input type="search" placeholder="Enter a city" autofocus="on" autocomplete="off" id="city-input" />
+						
+				<button type="submit" class="btn-submit" id = "search-button"><i class="fas fa-search"></i></button>
+			</form>		
+			<button type="button" class="btn-location" id="location">
+				<i class="fas fa-map-marker-alt"></i>
+				</button>
+			</div>
+				
+
+				<h3 id="currentCity"></h3>
+				<h4 class="description" id="description">windy</h4>
+	
+				<div class="row">
+					<div class="col-3">
+						<div class="time">
+							<div class="time-body">
+	<div class="row">
+			<div class="col-5">
+					<h5 class="date-title">Date</h5>
+					<p class="currentDate">
+					 current Date
+					</p>
+			</div>
+			<div class="col-5">
+					<h5 class="last-update">Last Update</h5>
+					<p class="last-update">12:00</p>
+			</div>
+	</div>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-3">
+						<div class="Temperature">
+							<div class="Temperature-body">
+								<h4 class="Temp-title">Temperature</h4>
+								<h5 class="maxTemp-title">Max. Temperature:</h5>
+								<p class="maxTemp">20°c</p>
+								<h5 class="minTemp-title">Min-Temperature:</h5>
+								<p class="minTemp">18°C</p>
+								<h5 class="currentTemp-title">current Temperature:</h5>
+								<p class="currentTemp" id="sun">19°</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="extra">
+								<div class="extra-body">
+										<h5 class="wind-title">Wind</h5>
+										<p class="wind" id="windSpeed">10km/h</p>
+									<h5 class="humidity-title">Humidity</h5>
+									<p class="humidity" id="humidityPercent">xx</p>
+							</div>
+					</div>
+				</div>
+				</div>
+				<hr>
+			<h2>Hourly Forecast</h2>
+			<div class="row">
+				<div class="col-2">
+					<div class="day">
+						<div class="day-body">
+							<h5 class="day-title">16:00</h5>
+							<p class="day-temp">20°C</p>
+							<p class="day-rainChance">40%</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-2">
+					<div class="day">
+						<div class="day-body">
+							<h5 class="day-title">17:00</h5>
+							<p class="day-temp">18°C</p>
+							<p class="day-rainChance">40%</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-2">
+					<div class="day">
+						<h5 class="day-title">18:00</h5>
+							<div class="day-body">
+								<div class="row">
+									<div class="col-5">
+										<i class="fas fa-thermometer-three-quarters"></i>
+									</div>
+									<div class="col-5">
+										<p class="day-temp">20°C</p>
+									</div>
+								</div>
+						 <div class="row">
+									<div class="col-5">
+										<i class="fas fa-umbrella"></i>
+									</div>
+									<div class="col-5">
+										<p class="day-rainChance">80%</p>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-2">
+					<div class="day">
+						<div class="day-body">
+							<h5 class="day-title">19:00</h5>
+							<p class="day-temp">19°C</p>
+							<p class="day-rainChance">10%</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-2">
+					<div class="day">
+						<div class="day-body">
+							<h5 class="day-title">20:00</h5>
+							<p class="day-temp">22°C</p>
+							<p class="day-rainChance">80%</p>
+						</div>
+					</div>
+				</div>
+				<hr />
+				<h2>Weekly Forecast</h2>
+				<div class="row">
+					<div class="col-2">
+						<div class="day">
+							<div class="day-body">
+								<h5 class="day-title">Monday</h5>
+								<p class="day-temp">20°C</p>
+								<p class="day-rainChance">40%</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="day">
+							<div class="day-body">
+								<h5 class="day-title">Tuesday</h5>
+								<p class="day-temp">18°C</p>
+								<p class="day-rainChance">40%</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="day">
+							<div class="day-body">
+								<h5 class="day-title">Wednesday</h5>
+								<p class="day-temp">20°C</p>
+								<p class="day-rainChance">80%</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="day">
+							<div class="day-body">
+								<h5 class="day-title">Thursday</h5>
+								<p class="day-temp">19°C</p>
+								<p class="day-rainChance">10%</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="day">
+							<div class="day-body">
+								<h5 class="day-title">Friday</h5>
+								<p class="day-temp">22°C</p>
+								<p class="day-rainChance">80%</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr />
+			</div>
+			<script src="script/app.js"></script>
+			
+		</body>
+	
+	</html>
+
+</html>
+</body>
+</html>
