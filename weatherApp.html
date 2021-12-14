@@ -36,24 +36,24 @@
 		<body>
 			<div class="Container">
 				<h1>Weather Forecast</h1>
-				<img href="media/weather_girl.jpg" alt="Girl with Weather Forecast">
-				<hr />
+			<div class="row">
 
-				<div class="search-bar"> 
+			</div>
 					<form class="search-form" id="search-form">
-						<input type="search" placeholder="Enter a city" autofocus="on" autocomplete="off" id="city-input" />
-						
+						<input type="search" placeholder="Enter a city" autofocus="on" autocomplete="off" id="city-input" />	
 				<button type="submit" class="btn-submit" id = "search-button"><i class="fas fa-search"></i></button>
 			</form>		
 			<button type="button" class="btn-location" id="location">
 				<i class="fas fa-map-marker-alt"></i>
 				</button>
-			</div>
+			
 				
 
 				<h3 id="currentCity"></h3>
 				<h4 class="description" id="description">windy</h4>
-	
+	<button type="button" class="bnt-metric" id="metric-value">°C</button>
+	<button type="button" class="bnt-imperial" id="imperial-value">°F</button>
+	<button type="button" class="bnt-si" id="si-value">K</button>
 				<div class="row">
 					<div class="col-3">
 						<div class="time">
@@ -211,9 +211,9 @@
 				</div>
 				<hr />
 			</div>
-			<footer>Hosted by <link href="https://www.netlify.com/?utm_source=google&utm_medium=paid_search&utm_campaign=12755510784&adgroup=118788138897&utm_term=netlify&utm_content=aud-840722397501:kwd-371509120223&creative=514583565825&device=c&matchtype=e&location=9042732&gclid=Cj0KCQiAnuGNBhCPARIsACbnLzow46exHfFYC6VzT-xGK6LER39ECpL9f4ZYB9Xv2BXw3PeNs9Oy_n4aAqwhEALw_wcB"> Netify </footer>
+			<footer>Hosted by <a href="https://www.netlify.com/?utm_source=google&utm_medium=paid_search&utm_campaign=12755510784&adgroup=118788138897&utm_term=netlify&utm_content=aud-840722397501:kwd-371509120223&creative=514583565825&device=c&matchtype=e&location=9042732&gclid=Cj0KCQiAnuGNBhCPARIsACbnLzow46exHfFYC6VzT-xGK6LER39ECpL9f4ZYB9Xv2BXw3PeNs9Oy_n4aAqwhEALw_wcB">Netify</a> </footer>
 			<script src="script/app.js"></script>
-			
+		
 		</body>
 	
 	</html>
