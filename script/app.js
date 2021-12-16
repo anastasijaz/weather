@@ -68,6 +68,7 @@ function displayWeatherCondition(response) {
     response.data.main.temp_min
   )}°C`;
 }
+
 //convert metric to imperial
 //function metricToImperial(event) {
 // event.preventDefault();
@@ -80,10 +81,28 @@ function displayWeatherCondition(response) {
 //Temp Buttons
 //let FahrenheitBnt = document.querySelector("#imperial-value");
 //FahrenheitBnt.addEventListener("click", metricToImperial);
-
+let CelciusBnt = document.querySelector("#metric-value");
+CelciusBnt.addEventListener("click", displayWeatherCondition);
 //Buttons
 let cityBttn = document.querySelector("#location");
 cityBttn.addEventListener("click", getCurrentPositon);
 
 let searchBttn = document.querySelector("#search-form");
 searchBttn.addEventListener("submit", searchCity);
+
+//hourly and weekly
+function searchLocationHourlyWeekly(position) {
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let lat = position.coords.latitude;
+  let long = position.coords.longitude;
+  let exclude = "alert, minutely";
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=${exclude}&appid=${apiKey}`;
+  axios.get(url).then(displayWeatherCondition);
+}
+function getCurrentPositonHourlyWeekly(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocationHourlyWeekly);
+}
+function displayHourlyWeatherConditons(event) {
+  document.querySelector("#");
+}
