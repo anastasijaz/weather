@@ -62,6 +62,14 @@ function displayWeatherCondition(response) {
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
 }
+//convert metric to imperial 
+function metricToImperial (event){
+  let CelciusTemp = document.querySelector("#sun").innerHTML
+   let FahrenheitTemp = `${Math.round((${CelciusTemp} × 9/5) + 32)}°F`;
+   document.querySelector("#sun").innerHTML = ${FahrenheitTemp};
+}
+//Temp Buttons
+
 
 //Buttons
 let cityBttn = document.querySelector("#location");
@@ -69,3 +77,5 @@ cityBttn.addEventListener("click", getCurrentPositon);
 
 let searchBttn = document.querySelector("#search-form");
 searchBttn.addEventListener("submit", searchCity);
+
+
