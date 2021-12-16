@@ -61,16 +61,25 @@ function displayWeatherCondition(response) {
     ${response.data.main.humidity} %`;
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+  document.querySelector("#maxTemp").innerHTML = `${Math.round(
+    response.data.main.temp_max
+  )}°C`;
+  document.querySelector("#minTemp").innerHTML = `${Math.round(
+    response.data.main.temp_min
+  )}°C`;
 }
 //convert metric to imperial
-function metricToImperial(event) {
-  //let CelciusTemp = document.querySelector("#sun").innerHTML
-  //let FahrenheitTemp = ${Math.round((${CelciusTemp} × 9/5) + 32)};
-  document.querySelector("#sun").innerHTML = `XXXX°F`;
-}
+//function metricToImperial(event) {
+// event.preventDefault();
+// let TempElement = document.querySelector("#sun");
+//let FahrenheitTemperatur = (2 × 9)/5 + 32 ;
+// let convertetValue = Math.round(FahrenheitTemperatur);
+//TempElement.innerHTML = `${FahrenheitTemperatur}°F`;
+//}
+
 //Temp Buttons
-let FahrenheitBnt = document.querySelector("#imperial-value");
-FahrenheitBnt.addEventListener("click", metricToImperial);
+//let FahrenheitBnt = document.querySelector("#imperial-value");
+//FahrenheitBnt.addEventListener("click", metricToImperial);
 
 //Buttons
 let cityBttn = document.querySelector("#location");
