@@ -66,6 +66,10 @@ img {
   padding: 10px;
   margin: 10px;
 }
+.city-input {
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
 .btn-location {
   position: relative;
   color: #eee;
