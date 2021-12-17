@@ -88,6 +88,12 @@ function metricToImperial(event) {
 }
 function ImperialToMetric(event) {
   document.querySelector("#sun").innerHTML = `${Math.round(celciusTemp)}°C`;
+  document.querySelector("#maxTemp").innerHTML = `${Math.round(
+    celciusMaxTemp
+  )}°C`;
+  document.querySelector("#minTemp").innerHTML = `${Math.round(
+    celciusMinTemp
+  )}°C`;
 }
 //Temp Buttons
 let FahrenheitBnt = document.querySelector("#imperial-value");
