@@ -14,7 +14,7 @@ h2 {
 h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 150;
-  font-size: 80px;
+  font-size: 45px;
   text-align: left;
 }
 h4 {
@@ -66,9 +66,14 @@ img {
   padding: 10px;
   margin: 10px;
 }
-.city-input {
+.search-city {
   font-family: "Poppins", sans-serif;
-  color: black;
+  color: white;
+  align-items: center;
+  background-color: #2e94b9;
+  border: none;
+  outline: none;
+  transition: 0.4s;
 }
 .btn-location {
   position: relative;
