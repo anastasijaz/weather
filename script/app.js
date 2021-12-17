@@ -45,15 +45,16 @@ function searchLocation(position) {
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
   axios.get(url).then(displayWeatherCondition);
 }
+
 function getCurrentPositon(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
+
 function displayWeatherCondition(response) {
   document.querySelector("#currentCity").innerHTML = response.data.name;
-  document.querySelector("#sun").innerHTML = ` ${Math.round(
-    response.data.main.temp
-  )}°C`;
+  celciusTemp = response.data.main.temp;
+  document.querySelector("#sun").innerHTML = ` ${Math.round(celciusTemp)}°C`;
   document.querySelector("#windSpeed").innerHTML = `${Math.round(
     response.data.wind.speed
   )} km/h`;
@@ -61,28 +62,43 @@ function displayWeatherCondition(response) {
     ${response.data.main.humidity} %`;
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+  celciusMaxTemp = response.data.main.temp_max;
   document.querySelector("#maxTemp").innerHTML = `${Math.round(
-    response.data.main.temp_max
+    celciusMaxTemp
   )}°C`;
+  celciusMinTemp = response.data.main.temp_min;
   document.querySelector("#minTemp").innerHTML = `${Math.round(
-    response.data.main.temp_min
+    celciusMinTemp
   )}°C`;
 }
 
 //convert metric to imperial
-//function metricToImperial(event) {
-// event.preventDefault();
-// let TempElement = document.querySelector("#sun");
-//let FahrenheitTemperatur = (2 × 9)/5 + 32 ;
-// let convertetValue = Math.round(FahrenheitTemperatur);
-//TempElement.innerHTML = `${FahrenheitTemperatur}°F`;
-//}
+function metricToImperial(event) {
+  let TempElement = document.querySelector("#sun");
+  let TempMaxElement = document.querySelector("#maxTemp");
+  let TempMinElement = document.querySelector("#minTemp");
 
+  let FahrenheitTemperatur = (celciusTemp * 9) / 5 + 32;
+  let FahrenheitMaxTemperatur = (celciusMaxTemp * 9) / 5 + 32;
+  let FahrenheitMinTemperatur = (celciusMinTemp * 9) / 5 + 32;
+
+  TempElement.innerHTML = `${Math.round(FahrenheitTemperatur)}°F`;
+  TempMaxElement.innerHTML = `${Math.round(FahrenheitMaxTemperatur)}°F`;
+  TempMinElement.innerHTML = `${Math.round(FahrenheitMinTemperatur)}°F`;
+}
+function ImperialToMetric(event) {
+  document.querySelector("#sun").innerHTML = `${Math.round(celciusTemp)}°C`;
+}
 //Temp Buttons
-//let FahrenheitBnt = document.querySelector("#imperial-value");
-//FahrenheitBnt.addEventListener("click", metricToImperial);
+let FahrenheitBnt = document.querySelector("#imperial-value");
+FahrenheitBnt.addEventListener("click", metricToImperial);
+
 let CelciusBnt = document.querySelector("#metric-value");
-CelciusBnt.addEventListener("click", displayWeatherCondition);
+CelciusBnt.addEventListener("click", ImperialToMetric);
+
+let celciusTemp = null;
+let celciusMaxTemp = null;
+let celciusMinTemp = null;
 //Buttons
 let cityBttn = document.querySelector("#location");
 cityBttn.addEventListener("click", getCurrentPositon);
@@ -91,18 +107,18 @@ let searchBttn = document.querySelector("#search-form");
 searchBttn.addEventListener("submit", searchCity);
 
 //hourly and weekly
-function searchLocationHourlyWeekly(position) {
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let lat = position.coords.latitude;
-  let long = position.coords.longitude;
-  let exclude = "alert, minutely";
-  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=${exclude}&appid=${apiKey}`;
-  axios.get(url).then(displayWeatherCondition);
-}
-function getCurrentPositonHourlyWeekly(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocationHourlyWeekly);
-}
-function displayHourlyWeatherConditons(event) {
-  document.querySelector("#");
-}
+//function searchLocationHourlyWeekly(position) {
+//let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+//  let lat = position.coords.latitude;
+//let long = position.coords.longitude;
+// let exclude = "alert, minutely";
+//let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=${exclude}&appid=${apiKey}`;
+//axios.get(url).then(displayWeatherCondition);
+//}
+//function getCurrentPositonHourlyWeekly(event) {
+//event.preventDefault();
+//navigator.geolocation.getCurrentPosition(searchLocationHourlyWeekly);
+//}
+//function displayHourlyWeatherConditons(event) {
+//document.querySelector("#time-1").innerHTML=;
+//}
