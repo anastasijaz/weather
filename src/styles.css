@@ -14,7 +14,7 @@ h2 {
 h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 190;
-  font-size: 60px;
+  font-size: 0px;
   text-align: left;
 }
 h4 {
@@ -94,6 +94,29 @@ img {
   height: 40px;
   border-radius: 50%;
   background-color: #475053;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bnt-metric {
+  color: black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-color: #eee;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bnt-imperial {
+  color: black;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-color: #eee;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
