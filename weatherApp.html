@@ -38,126 +38,65 @@
 				<h1>Weather Forecast</h1>
 			
 					<form class="search-form" id="search-form">
-						<input type= "search"class="search-city" placeholder="Search your city..." autofocus="on" autocomplete="off" id="city-input" />	
-				<button type="submit" class="btn-submit" id = "search-button"><i class="fas fa-search"></i></button>
-				<button type="button" class="btn-location" id="location">
-					<i class="fas fa-map-marker-alt"></i>
-				</button>
-			</form>	
+						<input type= "search" class = "search-city" placeholder="Search your city..." autofocus="on" autocomplete="off" id="city-input" />	
+				        <button type="submit" class="btn-submit" id = "search-button"><i class="fas fa-search"></i></button>
+				        <button type="button" class="btn-location" id="location">
+					     <i class="fas fa-map-marker-alt"></i>
+				        </button>
+			        </form>	
 			
-			<h3 id="currentCity"></h3>
-			<h4 class="description" id="description"></h4>
-			<div class="row">
-				<p class="currentTemp" id="sun"></p>
-				
-				<form class="tempBnt">
-					<button type="button" class="bnt-metric" id="metric-value">°C</button>
-					<button type="button" class="bnt-imperial" id="imperial-value">°F</button>
-				</form>
-			</div>
-				
-	<div class="row">
-					<div class="col-3">
-						<div class="time">
-							<div class="time-body">
-	<div class="row">
-			<div class="col-5">
-					<h5 class="date-title">Date</h5>
-					<p class="currentDate">
-					 current Date
-					</p>
-			</div>
-			
-	</div>
+					<div class="row">
+						<div class="col-6">
+							<h3 class ="currrentCity" id="currentCity"></h3>
+							<h4 class="description" id="description"></h4>
+							<p class="currentTime"></p> <p class="currentDate"></p>
+						</div>
+						<div class="col-3">
+							<div class="row">
+								<p class="currentTemp" id="sun"></p>
 							</div>
-						</div>
-					</div>
-				
-					<div class="col-3">
-						<div class="Temperature">
-							<div class="Temperature-body">
-								<h4 class="Temp-title">Temperature</h4>
-								<h5 class="maxTemp-title">Max. Temperature:</h5>
-								<p class="maxTemp" id="maxTemp">20°c</p>
-								<h5 class="minTemp-title">Min-Temperature:</h5>
-								<p class="minTemp" id="minTemp">18°C</p>
+							<div class="row">
+								<div class="col-3" >
+									<button type="button" class="bnt-metric" id="metric-value">°C</button>
+								</div>
+								<div class= "col-3">
+									<button type="button" class="bnt-imperial" id="imperial-value">°F</button>
+								</div>
 							</div>
-						</div>
-					</div>
-					<div class="col-3">
-						<div class="extra">
-								<div class="extra-body">
-										<h5 class="wind-title">Wind</h5>
-										<p class="wind" id="windSpeed">10km/h</p>
-									<h5 class="humidity-title">Humidity</h5>
-									<p class="humidity" id="humidityPercent">xx</p>
-							</div>
-					</div>
-				</div>
-				</div>
-				<hr>
-			<h2>Hourly Forecast</h2>
-			<div class="row">
-				<div class="col-2">
-					<div class="day">
-						<div class="day-body">
-							<h5 class="day-title" id="time-1">16:00</h5>
-							<p class="day-temp">20°C</p>
-							<p class="day-rainChance">40%</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="day">
-						<div class="day-body">
-							<h5 class="day-title">17:00</h5>
-							<p class="day-temp">18°C</p>
-							<p class="day-rainChance">40%</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="day">
-						<h5 class="day-title">18:00</h5>
-							<div class="day-body">
+						</div>	
+						
+							<div class="col-3">
+								<div class= " row">
+									<div class="col-5">
+										<p class="wind-title">Wind</p>
+									</div>
+									<div class="col-5">
+										<p class="wind" id="windSpeed"></p>
+									</div>
+								</div>
 								<div class="row">
 									<div class="col-5">
-										<i class="fas fa-thermometer-three-quarters"></i>
+										<p class="humidity-title">Humidity</p>
 									</div>
 									<div class="col-5">
-										<p class="day-temp">20°C</p>
+										<p class="humidity" id="humidityPercent"></p>
 									</div>
 								</div>
-						 <div class="row">
-									<div class="col-5">
-										<i class="fas fa-umbrella"></i>
+								<div class="row">
+									<div class="col-3">
+										<p class="minTemp" id="minTemp"></p>
 									</div>
-									<div class="col-5">
-										<p class="day-rainChance">80%</p>
+									<div class="col-2">
+										<p class="maxTemp" id="maxTemp"></p>
 									</div>
 								</div>
-						</div>
+							</div>	
+						
+						
 					</div>
-				</div>
-				<div class="col-2">
-					<div class="day">
-						<div class="day-body">
-							<h5 class="day-title">19:00</h5>
-							<p class="day-temp">19°C</p>
-							<p class="day-rainChance">10%</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="day">
-						<div class="day-body">
-							<h5 class="day-title">20:00</h5>
-							<p class="day-temp">22°C</p>
-							<p class="day-rainChance">80%</p>
-						</div>
-					</div>
-				</div>
-				<hr />
+					
+				<hr>
+			
 				<h2>Weekly Forecast</h2>
 				<div class="row">
 					<div class="col-2">
@@ -208,7 +147,8 @@
 				</div>
 				<hr />
 			</div>
-			<footer>Hosted by <a href="https://www.netlify.com/?utm_source=google&utm_medium=paid_search&utm_campaign=12755510784&adgroup=118788138897&utm_term=netlify&utm_content=aud-840722397501:kwd-371509120223&creative=514583565825&device=c&matchtype=e&location=9042732&gclid=Cj0KCQiAnuGNBhCPARIsACbnLzow46exHfFYC6VzT-xGK6LER39ECpL9f4ZYB9Xv2BXw3PeNs9Oy_n4aAqwhEALw_wcB">Netify</a> </footer>
+			<footer>Hosted by <a href="https://www.netlify.com/?utm_source=google&utm_medium=paid_search&utm_campaign=12755510784&adgroup=118788138897&utm_term=netlify&utm_content=aud-840722397501:kwd-371509120223&creative=514583565825&device=c&matchtype=e&location=9042732&gclid=Cj0KCQiAnuGNBhCPARIsACbnLzow46exHfFYC6VzT-xGK6LER39ECpL9f4ZYB9Xv2BXw3PeNs9Oy_n4aAqwhEALw_wcB">Netify</a> 
+			Coded by Anastasija Zlatic</footer>
 			<script src="script/app.js"></script>
 		
 		</body>

@@ -1,19 +1,20 @@
 let now = new Date();
+let currentTime = document.querySelector(".currentTime");
 let currentDate = document.querySelector(".currentDate");
 let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 let months = [
-  "January",
-  "Febuary",
-  "March",
-  "April",
+  "Jan.",
+  "Feb.",
+  "Mar",
+  "Apr",
   "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 let hour = now.getHours();
@@ -23,10 +24,11 @@ let month = months[now.getMonth()];
 let year = now.getFullYear();
 let minutes = now.getMinutes();
 if (minutes < 10) {
-  currentDate.innerHTML = `${hour}:0${minutes} ${day}, ${date}. ${month}. ${year}`;
+  currentTime.innerHTML = `${hour}:0${minutes} ${day}, `;
 } else {
-  currentDate.innerHTML = `${hour}:${minutes} ${day}, ${date}. ${month}. ${year}`;
+  currentTime.innerHTML = `${hour}:${minutes} ${day}, `;
 }
+currentDate.innerHTML = `${date}. ${month}. ${year}`;
 
 function searchCity(event) {
   event.preventDefault();
@@ -61,7 +63,7 @@ function displayWeatherCondition(response) {
   document.querySelector("#humidityPercent").innerHTML = `
     ${response.data.main.humidity} %`;
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
   celciusMaxTemp = response.data.main.temp_max;
   document.querySelector("#maxTemp").innerHTML = `${Math.round(
     celciusMaxTemp
@@ -69,7 +71,8 @@ function displayWeatherCondition(response) {
   celciusMinTemp = response.data.main.temp_min;
   document.querySelector("#minTemp").innerHTML = `${Math.round(
     celciusMinTemp
-  )}°C`;
+  )}°C -`;
+  document.querySelector("#icon").innerHTML = ` ${response.data.icon}`;
 }
 
 //convert metric to imperial
