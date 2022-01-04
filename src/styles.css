@@ -127,8 +127,7 @@ img {
   font-size: 50px;
   text-align: right;
 }
-.WeatherInfo {
-}
+
 .Temperature-body {
   text-align: center;
 }
@@ -156,4 +155,9 @@ img {
   border-radius: 20%;
   border-color: #2e94b9;
   margin: 10px 0px 10px 0px;
+}
+
+.icon {
+  font-size: 1px;
+  text-align: right;
 }
