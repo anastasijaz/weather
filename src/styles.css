@@ -134,6 +134,16 @@ img {
 .extra {
   text-align: center;
 }
+.main-icon {
+  width: 150px;
+  height: 150px;
+  text-align: right;
+}
+.img-forecast {
+  width: 50px;
+  height: 50px;
+  text-align: left;
+}
 
 .day-title {
   font-family: "Poppins", sans-serif;
@@ -157,7 +167,16 @@ img {
   margin: 10px 0px 10px 0px;
 }
 
-.icon {
-  font-size: 1px;
-  text-align: right;
+.weather-forecast-temperatures {
+  font-family: "Poppins", sans-serif;
+  font-weight: 50;
+  font-size: 15px;
+  text-align: center;
+}
+
+.weather-forecast-date {
+  font-family: "Poppins", sans-serif;
+  font-weight: 150;
+  font-size: 20px;
+  text-align: center;
 }

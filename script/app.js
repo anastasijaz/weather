@@ -53,9 +53,10 @@ function displayForecast(response) {
         <img
           src="http://openweathermap.org/img/wn/${
             forecastday.weather[0].icon
-          }@2x.png"
+          }@4x.png"
           alt=""
-          width="5"
+          width=""
+          class="img-forecast"
         />
         <div class="weather-forecast-temperatures">
           <span class="weather-forecast-temperature-max"> ${Math.round(
