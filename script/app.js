@@ -77,7 +77,8 @@ function displayForecast(response) {
 }
 function hourlyForecast(response) {
   let hourlyForecastElement = document.querySelector("#hourly-forecast");
-  hourlyForecastElement.innerHTML = "Hourly -Forecast";
+  hourlyForecastElement.innerHTML = "Hourly-Forecast";
+  console.log(hourlyForecastElement);
 }
 
 function searchCity(event) {
