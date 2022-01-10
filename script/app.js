@@ -76,39 +76,10 @@ function displayForecast(response) {
   console.log(forecastHTML);
 }
 function hourlyForecast(response) {
-  let hourlyForecastData = response.data.hourly;
   let hourlyForecastElement = document.querySelector("#hourly-forecast");
-
-  let hourlyForecastHTML = `<div class="row">`;
-  hourlyForecastData.forEach(function (forecasthour, index) {
-    if (index < 6) {
-      hourlyForecastHTML =
-        hourlyForecastHTML +
-        `
-      <div class="col-2">
-        <div class="weather-forecast-date">${displayTime(forecasthour.dt)}</div>
-        <img
-          src="http://openweathermap.org/img/wn/${
-            forecasthour.weather[0].icon
-          }@4x.png"
-          alt=""
-          width=""
-          class="img-hourlyForecast"
-        />
-        <div class="weather-hourly-forecast-temperatures">
-          <span class="weather-hourly-forecast-temperature"> ${Math.round(
-            forecasthour.temp.max
-          )}°</span>
-        </div>
-      </div>
-  `;
-    }
-  });
-
-  hourlyForecastHTML = hourlyForecastHTML + `</div>`;
-  hourlyForecastElement.innerHTML = hourlyForecastHTML;
-  console.log(hourlyForecastHTML);
+  hourlyForecastElement.innerHTML = "Hourly -Forecast";
 }
+
 function searchCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
