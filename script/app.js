@@ -38,7 +38,7 @@ function displayDate(timestamp) {
   return day;
 }
 
-function displayWeatherCondition(response) {
+function displayForecast(response) {
   let forecastData = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
@@ -82,7 +82,7 @@ function searchCity(event) {
   let apiKey = "ad6adba1de9c56cc7cb494546cf33bc9";
   let units = "metric";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(url).then(displayWeatherCondition);
+  axios.get(url).then(displayForecast);
 }
 // search Location
 function searchLocation(position) {
@@ -90,7 +90,7 @@ function searchLocation(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
-  axios.get(url).then(displayWeatherCondition);
+  axios.get(url).then(displayForecast);
 }
 
 function getCurrentPositon(event) {
