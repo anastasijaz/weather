@@ -38,7 +38,7 @@ function displayDate(timestamp) {
   return day;
 }
 
-function displayForecast(response) {
+function displayWeatherCondition(response) {
   let forecastData = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
