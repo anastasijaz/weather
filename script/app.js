@@ -75,11 +75,6 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
   console.log(forecastHTML);
 }
-function hourlyForecast(response) {
-  let hourlyForecastElement = document.querySelector("#hourly-forecast");
-  hourlyForecastElement.innerHTML = "Hourly-Forecast";
-  console.log(hourlyForecastElement);
-}
 
 function searchCity(event) {
   event.preventDefault();
@@ -89,7 +84,6 @@ function searchCity(event) {
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(url).then(displayWeatherCondition);
 }
-
 // search Location
 function searchLocation(position) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
@@ -109,36 +103,6 @@ function getWeeklyForecast(coordinates) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
-}
-
-function displayWeatherCondition(response) {
-  let icon = document.querySelector("#icon");
-  console.log(response.data);
-  document.querySelector("#currentCity").innerHTML = response.data.name;
-  celciusTemp = response.data.main.temp;
-  document.querySelector("#sun").innerHTML = ` ${Math.round(celciusTemp)}°C`;
-  document.querySelector("#windSpeed").innerHTML = `${Math.round(
-    response.data.wind.speed
-  )} km/h`;
-  document.querySelector("#humidityPercent").innerHTML = `
-    ${response.data.main.humidity} %`;
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].description;
-  celciusMaxTemp = response.data.main.temp_max;
-  document.querySelector("#maxTemp").innerHTML = `${Math.round(
-    celciusMaxTemp
-  )}°C`;
-  celciusMinTemp = response.data.main.temp_min;
-  document.querySelector("#minTemp").innerHTML = `${Math.round(
-    celciusMinTemp
-  )}°C -`;
-  icon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  icon.setAttribute("alt", response.data.weather[0].description);
-
-  getWeeklyForecast(response.data.coord);
 }
 
 //convert metric to imperial

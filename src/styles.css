@@ -180,9 +180,10 @@ img {
   font-size: 20px;
   text-align: center;
 }
-.hourly-Forecast {
+.hourlyforecast {
   font-family: "Poppins", sans-serif;
   font-size: 50px;
+  color: black;
 }
 .footer {
   text-align: center;
