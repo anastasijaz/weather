@@ -74,16 +74,10 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-function getWeeklyForecast(coordinates) {
-  console.log(coordinates);
-  let apiKey = "ad6adba1de9c56cc7cb494546cf33bc9";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
-}
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
-  let cityElement = document.querySelector("#city");
+  let cityElement = document.querySelector("#currentCity");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
@@ -113,8 +107,9 @@ function searchCity(event) {
   let apiKey = "ad6adba1de9c56cc7cb494546cf33bc9";
   let units = "metric";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(url).then(displayTemperature);
+  axios.get(url).then(displayForecast);
 }
+
 // search Location
 function searchLocation(position) {
   let apiKey = "ad6adba1de9c56cc7cb494546cf33bc9";
@@ -129,7 +124,7 @@ function getCurrentPositon(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-//convert metric to imperial
+//Conversions
 function metricToImperial(event) {
   let TempElement = document.querySelector("#sun");
   let TempMaxElement = document.querySelector("#maxTemp");
@@ -143,6 +138,7 @@ function metricToImperial(event) {
   TempMaxElement.innerHTML = `${Math.round(FahrenheitMaxTemperatur)}°F`;
   TempMinElement.innerHTML = `${Math.round(FahrenheitMinTemperatur)}°F`;
 }
+
 function ImperialToMetric(event) {
   document.querySelector("#sun").innerHTML = `${Math.round(celciusTemp)}°C`;
   document.querySelector("#maxTemp").innerHTML = `${Math.round(
@@ -152,6 +148,7 @@ function ImperialToMetric(event) {
     celciusMinTemp
   )}°C`;
 }
+
 //Temp Buttons
 let FahrenheitBnt = document.querySelector("#imperial-value");
 FahrenheitBnt.addEventListener("click", metricToImperial);
@@ -162,7 +159,8 @@ CelciusBnt.addEventListener("click", ImperialToMetric);
 let celciusTemp = null;
 let celciusMaxTemp = null;
 let celciusMinTemp = null;
-//Buttons
+
+//Location Buttons
 let cityBttn = document.querySelector("#location");
 cityBttn.addEventListener("click", getCurrentPositon);
 
