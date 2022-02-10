@@ -180,7 +180,7 @@ let searchBttn = document.querySelector("#search-form");
 searchBttn.addEventListener("submit", searchCity);
 
 //NEW CODE
-let hourlyBnt = document.querySelector("#hourly");
+let hourlyBnt = document.querySelector("#bnt-hourly");
 hourlyBnt.addEventListener("click", gethourlyForecast);
 
 function gethourlyForecast(coordinates) {
@@ -190,21 +190,26 @@ function gethourlyForecast(coordinates) {
   axios.get(apiUrl).then(displayHourlyForecast);
 }
 
+function displayTime() {
+  let time = getHour();
+  return time;
+}
+
 function displayHourlyForecast(response) {
   let hourlyForecastData = response.data.hourly;
   let hourlyForecastElement = document.querySelector("#hourly-forecast");
 
   let hourlyForecastHTML = `<div class="row">`;
-  hourlyForecastData.forEach(function (forecastday, index) {
+  hourlyForecastData.forEach(function (forecasttime, index) {
     if (index < 6) {
       hourlyForecastHTML =
         hourlyForecastHTML +
         `
       <div class="col-2">
-        <div class="hourly-forecast-date">${displayDate(forecastday.dt)}</div>
+        <div class="hourly-forecast-date">${displayTime(forecasttime.dt)}</div>
         <img
           src="http://openweathermap.org/img/wn/${
-            forecastday.weather[0].icon
+            forecasttime.weather[0].icon
           }@4x.png"
           alt=""
           width=""
@@ -212,10 +217,10 @@ function displayHourlyForecast(response) {
         />
         <div class="hourly-forecast-temperatures">
           <span class="hourly-forecast-temperature"> ${Math.round(
-            forecastday.temp
+            forecasttime.temp
           )}°</span>
           <span class="hourly-forecast-temperature-feelsLike"> ${Math.round(
-            forecastday.feels_like
+            forecasttime.feels_like
           )}°</span>
         </div>
       </div>
