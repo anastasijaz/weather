@@ -190,7 +190,7 @@ function gethourlyForecast(coordinates) {
   axios.get(apiUrl).then(displayHourlyForecast);
 }
 
-function displayTime() {
+function displayTime(timestamp) {
   let time = getHour();
   return time;
 }
