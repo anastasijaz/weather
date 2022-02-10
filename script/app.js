@@ -179,14 +179,14 @@ cityBttn.addEventListener("click", getCurrentPositon);
 let searchBttn = document.querySelector("#search-form");
 searchBttn.addEventListener("submit", searchCity);
 
-//new Code
-let hourlyBnt = document.querySelector("#btn-hourly");
+//NEW CODE
+let hourlyBnt = document.querySelector("#hourly");
 hourlyBnt.addEventListener("click", gethourlyForecast);
 
 function gethourlyForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "ad6adba1de9c56cc7cb494546cf33bc9";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,alerts,daily&appid={API key}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,alerts,daily&appid=${apiKey}`;
   axios.get(apiUrl).then(displayHourlyForecast);
 }
 
