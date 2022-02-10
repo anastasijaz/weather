@@ -178,3 +178,52 @@ cityBttn.addEventListener("click", getCurrentPositon);
 
 let searchBttn = document.querySelector("#search-form");
 searchBttn.addEventListener("submit", searchCity);
+
+//new Code
+let hourlyBnt = document.querySelector("#btn-hourly");
+hourlyBnt.addEventListener("click", gethourlyForecast);
+
+function gethourlyForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "ad6adba1de9c56cc7cb494546cf33bc9";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,alerts,daily&appid={API key}`;
+  axios.get(apiUrl).then(displayHourlyForecast);
+}
+
+function displayHourlyForecast(response) {
+  let hourlyForecastData = response.data.hourly;
+  let hourlyForecastElement = document.querySelector("#hourly-forecast");
+
+  let hourlyForecastHTML = `<div class="row">`;
+  hourlyForecastData.forEach(function (forecastday, index) {
+    if (index < 6) {
+      hourlyForecastHTML =
+        hourlyForecastHTML +
+        `
+      <div class="col-2">
+        <div class="hourly-forecast-date">${displayDate(forecastday.dt)}</div>
+        <img
+          src="http://openweathermap.org/img/wn/${
+            forecastday.weather[0].icon
+          }@4x.png"
+          alt=""
+          width=""
+          class="img-forecast"
+        />
+        <div class="hourly-forecast-temperatures">
+          <span class="hourly-forecast-temperature"> ${Math.round(
+            forecastday.temp
+          )}°</span>
+          <span class="hourly-forecast-temperature-feelsLike"> ${Math.round(
+            forecastday.feels_like
+          )}°</span>
+        </div>
+      </div>
+  `;
+    }
+  });
+
+  hourlyForecastHTML = hourlyForecastHTML + `</div>`;
+  hourlyForecastElement.innerHTML = hourlyForecastHTML;
+  console.log(hourlyForecastHTML);
+}
