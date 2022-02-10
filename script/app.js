@@ -136,6 +136,42 @@ function getCurrentPositon(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
+//Conversions
+function metricToImperial(event) {
+  let TempElement = document.querySelector("#sun");
+  let TempMaxElement = document.querySelector("#maxTemp");
+  let TempMinElement = document.querySelector("#minTemp");
+
+  let FahrenheitTemperatur = (celciusTemp * 9) / 5 + 32;
+  let FahrenheitMaxTemperatur = (celciusMaxTemp * 9) / 5 + 32;
+  let FahrenheitMinTemperatur = (celciusMinTemp * 9) / 5 + 32;
+
+  TempElement.innerHTML = `${Math.round(FahrenheitTemperatur)}°F`;
+  TempMaxElement.innerHTML = `${Math.round(FahrenheitMaxTemperatur)}°F`;
+  TempMinElement.innerHTML = `${Math.round(FahrenheitMinTemperatur)}°F`;
+}
+
+function ImperialToMetric(event) {
+  document.querySelector("#sun").innerHTML = `${Math.round(celciusTemp)}°C`;
+  document.querySelector("#maxTemp").innerHTML = `${Math.round(
+    celciusMaxTemp
+  )}°C`;
+  document.querySelector("#minTemp").innerHTML = `${Math.round(
+    celciusMinTemp
+  )}°C`;
+}
+
+//Temp Buttons
+let FahrenheitBnt = document.querySelector("#imperial-value");
+FahrenheitBnt.addEventListener("click", metricToImperial);
+
+let CelciusBnt = document.querySelector("#metric-value");
+CelciusBnt.addEventListener("click", ImperialToMetric);
+
+let celciusTemp = null;
+let celciusMaxTemp = null;
+let celciusMinTemp = null;
+
 //Location Buttons
 let cityBttn = document.querySelector("#location");
 cityBttn.addEventListener("click", getCurrentPositon);
