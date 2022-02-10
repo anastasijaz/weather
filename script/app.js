@@ -40,7 +40,7 @@ function displayDate(timestamp) {
 
 function displayForecast(response) {
   let forecastData = response.data.daily;
-  let forecastElement = document.querySelector("#forecast");
+  let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
   forecastData.forEach(function (forecastday, index) {
