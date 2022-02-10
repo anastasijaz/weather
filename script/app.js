@@ -43,13 +43,13 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  forecastData.forEach(function (forecastday, index) {
+  forecastData.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
         `
       <div class="col-2">
-        <div class="weather-forecast-date">${displayDate(forecastday.dt)}</div>
+        <div class="weather-forecast-date">${displayDate(forecastDay.dt)}</div>
         <img
           src="http://openweathermap.org/img/wn/${
             forecastday.weather[0].icon
@@ -60,10 +60,10 @@ function displayForecast(response) {
         />
         <div class="weather-forecast-temperatures">
           <span class="weather-forecast-temperature-max"> ${Math.round(
-            forecastday.temp.max
+            forecastDay.temp.max
           )}°</span>
           <span class="weather-forecast-temperature-min"> ${Math.round(
-            forecastday.temp.min
+            forecastDay.temp.min
           )}°</span>
         </div>
       </div>
@@ -74,18 +74,23 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+function getWeeklyForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "ad6adba1de9c56cc7cb494546cf33bc9";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
-  let cityElement = document.querySelector("#currentCity");
+  let cityElement = document.querySelector("#city-input");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  celsiusTemperature = response.data.main.temp;
-
+  celsiusTemperature.innerHTML = response.data.main.temp;
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -121,6 +126,7 @@ function searchLocation(position) {
 
 function getCurrentPositon(event) {
   event.preventDefault();
+
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
